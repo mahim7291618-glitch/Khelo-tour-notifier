@@ -3,8 +3,8 @@ const admin = require('firebase-admin');
 const app = express();
 app.use(express.json());
 
-// আপনার service-account.json ফাইলটি এখানে লোড হবে
-const serviceAccount = require('./service-account.json');
+// Render-এর Environment Variable থেকে JSON ফাইলটি লোড করা হচ্ছে
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
